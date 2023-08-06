@@ -1,0 +1,36 @@
+# Ignorar archivos generados por Visual Studio
+*.user
+*.vs
+*.suo
+*.sln.docstates
+bin/
+obj/
+
+# Ignorar archivos de caché y archivos temporales
+[Tt]humbs.db
+*.log
+*.vspscc
+*.vssscc
+*.cache
+*.bak
+*.pidb
+*.userprefs
+*.dbmdl
+*.VC.db
+*sqlite
+
+# Ignorar carpetas de salida y compilación
+_ReSharper*/
+*.Resharper
+ReSharper*/
+[Tt]est[Rr]esult*
+[Bb]uild
+
+# Ignorar archivos de dependencias y paquetes NuGet
+packages/
+*.nupkg
+*.pfx
+*.snk
+
+# Ignorar archivos de configuración locales
+*.local.*

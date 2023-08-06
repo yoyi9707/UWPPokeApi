@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="Ejercicio.Views.List"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Ejercicio.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid HorizontalAlignment="Center" Height="948" Width="600" VerticalAlignment="Top" Margin="0,50,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <CommandBar Grid.Row="0">
+            <AppBarToggleButton Icon="Back" Label="Primero" Command="{Binding FirstPageCommand}" Click="ToggleButton_Click" IsChecked="False"/>
+            <AppBarToggleButton Icon="Previous" Label="Anterior" Command="{Binding PreviousPageCommand}" Click="ToggleButton_Click" IsChecked="False"/>
+            <AppBarToggleButton Icon="Next" Label="Siguiente" Command="{Binding NextPageCommand}" Click="ToggleButton_Click" IsChecked="False"/>
+            <AppBarToggleButton Icon="Forward" Label="Ultimo" Command="{Binding LastPageCommand}" Click="ToggleButton_Click" IsChecked="False"/>
+            <AppBarSeparator/>
+            <CommandBar.Content>
+                <TextBlock Text="Listado" Margin="10, 10" FontSize="18"/>
+            </CommandBar.Content>
+        </CommandBar>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock FontSize="12" HorizontalAlignment="Center" Margin="325,0,0,0" Padding="0,6,0,0">
+                     <Run Text="Mostrando página " /> 
+                     <Run Text="{Binding ActualPage}"/>
+                     <Run Text=" de " />
+                     <Run Text="{Binding TotalPages}"/>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <ListView x:Name="ListViewPokemon" ItemsSource="{Binding ListPokemons}" SelectionChanged="ListView_SelectionChanged">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="600"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Padding="5">
+                                <TextBlock TextAlignment="Center" Text="Nombre" FontSize="16" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="48">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="600"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                <TextBlock FontSize="16" TextAlignment="Center" Text="{Binding Name}"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>
